@@ -26,10 +26,11 @@
 (defn
   pretty-format
   [grouped-input]
-  (flatten (map #(-> [(str (get % :name) ":")
-                      ""
-                      (map (fn [item] (-> [(str "* " item)])) (get % :cards))
-                      ""])
+  (flatten (map #(-> (let [cards (get % :cards)]
+                       [(str (get % :name) ":")
+                        ""
+                        (map (fn [item] (-> [(str "* " item)])) cards)
+                        ""]))
                 grouped-input)))
 
 (defn -main
