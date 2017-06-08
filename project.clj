@@ -7,4 +7,5 @@
                  [org.clojure/data.json "0.2.6"]]
   :main ^:skip-aot trelloboardconverter.core
   :target-path "target/%s"
+  :aot [trelloboardconverter.core]
   :profiles {:uberjar {:aot :all}})
