@@ -7,4 +7,9 @@ test:
 .PHONY: build
 build:
 	lein uberjar
+	cp target/uberjar/*standalone* build/trello-board-converter.jar
+
+.PHONY: run
+run:
+	java -jar build/trello-board-converter.jar "books.json" >> books.md
 
