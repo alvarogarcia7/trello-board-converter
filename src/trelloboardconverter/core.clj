@@ -42,10 +42,5 @@
        group-by-list
        pretty-print))
 
-;; (filter #(= (get % "idList") "55bf9909d8050ff4a63fc599") (get input "cards"))
-
-;; cards grouped by list
-;; (group-by #(get % "idList") cards)
-
 ;; get all 1st level attributes
 ;; (map (fn [[a,b]] a) input)
