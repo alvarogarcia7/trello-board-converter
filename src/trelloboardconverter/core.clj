@@ -28,7 +28,7 @@
   [grouped-input]
   (flatten (doall (map #(-> [(str (get % :name) ":")
                              ""
-                             (flatten (doall (map (fn [item] (-> [(str "* " item)])) (get % :cards))))
+                             (map (fn [item] (-> [(str "* " item)])) (get % :cards))
                              ""])
                        grouped-input))))
 
