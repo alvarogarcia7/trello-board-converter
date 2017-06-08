@@ -28,10 +28,11 @@
   [grouped-input]
   (flatten (map #(-> (let [cards (get % :cards)
                            name (get % :name)
-                           column (fn [name] (str name ":"))]
+                           column (fn [name] (str name ":"))
+                           items-of (fn [cards] (map (fn [item] (-> [(str "* " item)])) cards))]
                        [(column name)
                         ""
-                        (map (fn [item] (-> [(str "* " item)])) cards)
+                        (items-of cards)
                         ""]))
                 grouped-input)))
 
