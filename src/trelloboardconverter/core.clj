@@ -32,7 +32,7 @@
   (let [cards (fn [group] (get group :cards))
         name (fn [group] (get group :name))
         column (fn [name] (str name ":"))
-        items-of (fn [cards] (map (fn [item] (-> [(str "* " item)])) cards))]
+        items-of (fn [cards] (map (fn [item] (-> [(str "  * " item)])) cards))]
     (flatten (map #(->
                      [(column (name %))
                       ""
