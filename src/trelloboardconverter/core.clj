@@ -18,10 +18,12 @@
       (fn [list] (= (get list "id") name)) (get input "lists"))))
 
 (defn group-by-list [input]
-  (map
-    (fn [[idList cards]]
-      {:name (get (list-by-name input idList) "name") :cards (map #(get % "name") cards)})
-    (group-by #(get % "idList") (cards input))))
+  (let [name (fn [item] (get item "name"))]
+    (map
+      (fn [[idList cards]]
+        {:name  (name (list-by-name input idList))
+         :cards (map #(name %) cards)})
+      (group-by #(get % "idList") (cards input)))))
 
 (defn
   pretty-format
