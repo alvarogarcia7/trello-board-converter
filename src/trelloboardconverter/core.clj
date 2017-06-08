@@ -33,7 +33,6 @@
               grouped-input)))
 
 (defn -main
-  "I don't do trelloboardconverter whole lot ... yet."
   [& args]
   (->> args
        first
