@@ -35,7 +35,12 @@
 (defn -main
   "I don't do trelloboardconverter whole lot ... yet."
   [& args]
-  (pretty-print (group-by-list (json/read (read-json (first args))))))
+  (->> args
+       first
+       read-json
+       json/read
+       group-by-list
+       pretty-print))
 
 ;; (filter #(= (get % "idList") "55bf9909d8050ff4a63fc599") (get input "cards"))
 
