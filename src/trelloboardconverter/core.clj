@@ -13,9 +13,10 @@
   (get input "cards"))
 
 (defn list-by-id [input name]
-  (first
-    (filter
-      (fn [list] (= (get list "id") name)) (get input "lists"))))
+  (let [lists (get input "lists")]
+    (first
+      (filter
+        (fn [list] (= (get list "id") name)) lists))))
 
 (defn group-by-list [input]
   (let [name (fn [item] (get item "name"))]
