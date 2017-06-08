@@ -24,13 +24,13 @@
     (group-by #(get % "idList") (cards input))))
 
 (defn
-  pretty-print
+  pretty-format
   [grouped-input]
-  (doall (map #(do (println (str (get % :name) ":"))
-                   (println "")
-                   (doall (map (fn [item] (println (str "* " item))) (get % :cards)))
-                   (println ""))
-              grouped-input)))
+  (flatten (doall (map #(-> [(str (get % :name) ":")
+                             ""
+                             (flatten (doall (map (fn [item] (-> [(str "* " item)])) (get % :cards))))
+                             ""])
+                       grouped-input))))
 
 (defn -main
   [& args]
@@ -39,7 +39,9 @@
        read-json
        json/read
        group-by-list
-       pretty-print))
+       pretty-format
+       (map println)
+       doall))
 
 ;; get all 1st level attributes
 ;; (map (fn [[a,b]] a) input)
