@@ -12,7 +12,7 @@
   [input]
   (get input "cards"))
 
-(defn list-by-name [input name]
+(defn list-by-id [input name]
   (first
     (filter
       (fn [list] (= (get list "id") name)) (get input "lists"))))
@@ -21,7 +21,7 @@
   (let [name (fn [item] (get item "name"))]
     (map
       (fn [[idList cards]]
-        {:name  (name (list-by-name input idList))
+        {:name  (name (list-by-id input idList))
          :cards (map #(name %) cards)})
       (group-by #(get % "idList") (cards input)))))
 
