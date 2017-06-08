@@ -4,4 +4,7 @@ test:
 	diff /tmp/trello2.actual resources/trello2.expected.json
 	echo "Tests are OK"
 
+.PHONY: build
+build:
+	lein uberjar
 
