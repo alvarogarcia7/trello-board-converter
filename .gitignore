@@ -11,3 +11,8 @@ pom.xml.asc
 ## idea
 *.iml
 .idea/
+
+## usage
+books.md
+books.json
+
