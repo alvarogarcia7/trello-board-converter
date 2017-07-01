@@ -23,8 +23,7 @@
   (let [name (fn [item] (get item "name"))
         addName (fn [item acc] (str acc (name item)))
         labels (fn [item]
-                 (let [labelsMap (get item "labels")
-                       labels (map #(get % "name") labelsMap)
+                 (let [labels (map #(get % "name") (get item "labels"))
                        desc (str/join ", " labels)]
                    (if (empty? labels)
                      nil
