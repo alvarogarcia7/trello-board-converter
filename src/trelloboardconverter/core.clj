@@ -21,7 +21,7 @@
 
 (defn group-by-list [input]
   (let [name (fn [item] (get item "name"))
-        addName (fn [item acc] (str acc (get item "name")))
+        addName (fn [item acc] (str acc (name item)))
         labels (fn [item]
                  (let [labelsMap (get item "labels")
                        labels (map #(get % "name") labelsMap)
