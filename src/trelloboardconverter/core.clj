@@ -21,7 +21,7 @@
 
 (defn group-by-list [input]
   (let [name (fn [item] (get item "name"))
-        name' (fn [item acc] (str acc (get item "name")))
+        addName (fn [item acc] (str acc (get item "name")))
         labels (fn [item]
                  (let [labelsMap (get item "labels")
                        labels (map #(get % "name") labelsMap)
@@ -37,7 +37,7 @@
     (map
       (fn [[idList cards]]
         {:name  (name (list-by-id input idList))
-         :cards (map #(->> "" (name' %) (addLabels %)) cards)})
+         :cards (map #(->> "" (addName %) (addLabels %)) cards)})
       (group-by #(get % "idList") (cards input)))))
 
 (defn
