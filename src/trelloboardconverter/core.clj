@@ -24,10 +24,10 @@
         addName (fn [item acc] (str acc (name item)))
         labels (fn [item]
                  (let [item-labels (get item "labels")
-                       labels (map #(get % "name") item-labels)]
-                   (if (empty? labels)
+                       label-names (map #(get % "name") item-labels)]
+                   (if (empty? label-names)
                      nil
-                     (str/join ", " labels))))
+                     (str/join ", " label-names))))
         addLabels (fn [card acc]
                     (if (nil? (labels card))
                       acc
