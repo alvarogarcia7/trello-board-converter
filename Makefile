@@ -7,6 +7,7 @@ test:
 .PHONY: build
 build:
 	lein uberjar
+	mkdir -p build; echo "Created folder"
 	cp target/uberjar/*standalone* build/trello-board-converter.jar
 
 .PHONY: run
