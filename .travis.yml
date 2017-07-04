@@ -1,0 +1,4 @@
+language: clojure
+script: make build test
+sudo: false
+
