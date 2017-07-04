@@ -1,6 +1,7 @@
 (ns trelloboardconverter.core
   (:gen-class)
-  (:require [clojure.data.json :as json]))
+  (:require [clojure.data.json :as json]
+            [clojure.string :as str]))
 
 (defn
   read-json
@@ -19,11 +20,22 @@
         (fn [list] (= (get list "id") name)) lists))))
 
 (defn group-by-list [input]
-  (let [name (fn [item] (get item "name"))]
+  (let [name (fn [item] (get item "name"))
+        addName (fn [item acc] (str acc (name item)))
+        labels (fn [item]
+                 (let [item-labels (get item "labels")
+                       label-names (map #(get % "name") item-labels)]
+                   (if (empty? label-names)
+                     nil
+                     (str/join ", " label-names))))
+        addLabels (fn [card acc]
+                    (if (nil? (labels card))
+                      acc
+                      (str acc "; " (labels card))))]
     (map
       (fn [[idList cards]]
         {:name  (name (list-by-id input idList))
-         :cards (map #(name %) cards)})
+         :cards (map #(->> "" (addName %) (addLabels %)) cards)})
       (group-by #(get % "idList") (cards input)))))
 
 (defn
