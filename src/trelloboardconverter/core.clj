@@ -19,7 +19,7 @@
       (filter
         (fn [list] (= (get list "id") name)) lists))))
 
-(defn group-by-list [input]
+(defn extract-data [input]
   (let [name (fn [item] (get item "name"))
         addName (fn [item acc] (str acc (name item)))
         labels (fn [item]
@@ -58,7 +58,7 @@
        first
        read-json
        json/read
-       group-by-list
+       extract-data
        pretty-format
        (map println)
        doall))
