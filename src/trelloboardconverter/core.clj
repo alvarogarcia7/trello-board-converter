@@ -62,6 +62,3 @@
        pretty-format
        (map println)
        doall))
-
-;; get all 1st level attributes
-;; (map (fn [[a,b]] a) input)
