@@ -12,5 +12,5 @@ build:
 
 .PHONY: run
 run:
-	java -jar build/trello-board-converter.jar "books.json" >> books.md
+	java -jar build/trello-board-converter.jar "books.json" > books.md
 
