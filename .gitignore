@@ -12,8 +12,16 @@ pom.xml.asc
 *.iml
 .idea/
 
-## usage
+## books usage
 books.md
 books.json
+
+## umanagement usage
+umanagement.md
+umanagement.json
+
 build/
+
+## authentication
+cookies.txt
 
