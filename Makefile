@@ -10,7 +10,13 @@ build:
 	mkdir -p build; echo "Created folder"
 	cp target/uberjar/*standalone* build/trello-board-converter.jar
 
-.PHONY: run
-run:
+.PHONY: umanagement
+umanagement:
+	bash get_board.sh "IenkQBxG" > umanagement.json
+	java -jar build/trello-board-converter.jar "umanagement.json" > umanagement.md
+
+.PHONY: books
+books:
+	bash get_board.sh "LPT145PW" > books.json
 	java -jar build/trello-board-converter.jar "books.json" > books.md
 
